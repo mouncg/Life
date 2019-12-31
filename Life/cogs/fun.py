@@ -2,6 +2,7 @@ import random
 import re
 import time
 import typing
+from gtts import gTTS
 
 import discord
 from discord.ext import commands
@@ -72,6 +73,13 @@ class Fun(commands.Cog):
         # End timer and log how long operation took.
         end = time.perf_counter()
         return await ctx.send(f"That took {end - start:.3f}sec to complete")
+    
+    @commands.command()
+    async def tts(self,ctx,*,message:str):
+        tts=gTTS(text=message,lang='en')
+        tts.save(f'{ctx.author}.mp3')
+        await ctx.trigger_typing()
+        await ctx.send(file=discord.File(f'{ctx.author}.mp3'))
 
 
 def setup(bot):
