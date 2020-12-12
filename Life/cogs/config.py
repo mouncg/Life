@@ -117,5 +117,5 @@ class Config(commands.Cog):
             await ctx.send(f'Cleared this servers prefixes.')
 
 
-def setup(bot):
+def setup(bot: Life):
     bot.add_cog(Config(bot))
