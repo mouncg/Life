@@ -28,10 +28,10 @@ class Config(commands.Cog):
     @commands.group(name='config', invoke_without_command=True)
     async def config(self, ctx: context.Context) -> None:
         """
-        Display the servers config.
+        Display this servers config.
         """
 
-        prefixes = ', '.join([f'`{prefix}`' for prefix in ctx.guild_config.prefixes])
+        prefixes = ', '.join(f'`{prefix}`' for prefix in ctx.guild_config.prefixes)
 
         embed = discord.Embed(colour=ctx.guild_config.colour, title=f'Guild config:', description=f'`Prefixes:` {prefixes}')
         embed.add_field(name='Embed colour:', value=f'`<---` `{str(ctx.guild_config.colour).upper()}`')
